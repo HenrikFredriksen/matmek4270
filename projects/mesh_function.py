@@ -4,12 +4,15 @@ import numpy as np
 
 
 def mesh_function(f: Callable[[float], float], t: np.ndarray) -> np.ndarray:
-    raise NotImplementedError
-
+    return np.array([f(ti) for ti in t])
 
 def func(t: float) -> float:
-    raise NotImplementedError
-
+    if t >= 0 and t <= 3:
+        return np.exp(-t)
+    elif t > 3 and t <= 4:
+        return np.exp(-3 * t)
+    
+    return 0
 
 def test_mesh_function():
     t = np.array([1, 2, 3, 4])
